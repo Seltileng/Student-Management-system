@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h1 class="h4">{{ s.name }}</h1>
+        <dl class="row">
+          <dt class="col-sm-3">Student ID</dt><dd class="col-sm-9">{{ s.student_id }}</dd>
+          <dt class="col-sm-3">Department</dt><dd class="col-sm-9">{{ s.department }}</dd>
+          <dt class="col-sm-3">Email</dt><dd class="col-sm-9">{{ s.email or '—' }}</dd>
+          <dt class="col-sm-3">Phone</dt><dd class="col-sm-9">{{ s.phone or '—' }}</dd>
+          <dt class="col-sm-3">Created</dt><dd class="col-sm-9">{{ s.created_at }}</dd>
+        </dl>
+        <a href="{{ url_for('edit_student', id=s.id) }}" class="btn btn-primary">Edit</a>
+        <a href="{{ url_for('list_students') }}" class="btn btn-secondary">Back</a>
+        <form method="post" action="{{ url_for('delete_student', id=s.id) }}" class="d-inline" onsubmit="return confirm('Delete this student?');">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <button class="btn btn-outline-danger">Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% set values = data if data is defined else {} %}
+<div class="row g-3">
+  <div class="col-md-6">
+    <label class="form-label">Student ID <span class="text-danger">*</span></label>
+    <input name="student_id" class="form-control" value="{{ values.student_id or '' }}" required>
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Name <span class="text-danger">*</span></label>
+    <input name="name" class="form-control" value="{{ values.name or '' }}" required>
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Department <span class="text-danger">*</span></label>
+    <input name="department" class="form-control" value="{{ values.department or '' }}" required>
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Email</label>
+    <input type="email" name="email" class="form-control" value="{{ values.email or '' }}">
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Phone</label>
+    <input name="phone" class="form-control" value="{{ values.phone or '' }}">
+  </div>
+</div>
